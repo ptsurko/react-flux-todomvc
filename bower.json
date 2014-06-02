@@ -1,0 +1,16 @@
+{
+  "name": "react-flux-todomvc",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ptsurko/react-flux-todomvc",
+  "authors": [
+    "ptsurko <pavel.tsurko@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
