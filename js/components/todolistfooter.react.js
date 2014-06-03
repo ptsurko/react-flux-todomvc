@@ -6,9 +6,11 @@ var TodoListFooterComponent = React.createClass({
   },
   onClearCompleted_: function() {
     var completedTodos = this.props.todos.filter(function(todo) {
-      return todo.get('completed') == true;
+      return todo.get('completed');
     });
-    this.props.todos.remove(completedTodos);
+    completedTodos.forEach(function(todo) {
+      todo.destroy();
+    });
   },
   render: function() {
     var completedTodos = this.props.todos.filter(function(todo) {
@@ -34,17 +36,16 @@ var TodoListFooterComponent = React.createClass({
           </span>
           <ul id="filters">
             <li>
-              <a href="javascript:void(0)" className={this.props.filter == TodoFilter.ALL ? 'selected' : ''} onClick={_.partial(this.props.onFilterChange, TodoFilter.ALL)}>All</a>
+              <a href="#" className={this.props.filter == TodoFilter.ALL ? 'selected' : ''}>All</a>
             </li>
             <li>
-              <a href="javascript:void(0)" className={this.props.filter == TodoFilter.ACTIVE ? 'selected' : ''} onClick={_.partial(this.props.onFilterChange, TodoFilter.ACTIVE)}>Active</a>
+              <a href="#active" className={this.props.filter == TodoFilter.ACTIVE ? 'selected' : ''}>Active</a>
             </li>
             <li>
-              <a href="javascript:void(0)" className={this.props.filter == TodoFilter.COMPLETED ? 'selected' : ''} onClick={_.partial(this.props.onFilterChange, TodoFilter.COMPLETED)}>Completed</a>
+              <a href="#completed" className={this.props.filter == TodoFilter.COMPLETED ? 'selected' : ''}>Completed</a>
             </li>
           </ul>
           {clearCompletedButton}
-        </footer>
-        );
+        </footer>);
   }
 });

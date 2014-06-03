@@ -18,10 +18,13 @@ var TodoItemComponent = React.createClass({
     this.props.todo.off();
   },
   onCompleteChange_: function() {
-    this.forceUpdate(function() { });
+    if (this.isMounted()) {
+      this.forceUpdate(function() { });
+    }
   },
   onToggleCheck_: function(e) {
     this.props.todo.set('completed', e.target.checked);
+    this.props.todo.save();
   },
   onStartEditing_: function() {
     this.setState({mode: TodoItemMode.EDIT});

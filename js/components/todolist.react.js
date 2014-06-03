@@ -5,7 +5,8 @@ var TodoListComponent = React.createClass({
     return (
         <ul id="todo-list">
           {this.props.todos.map(function(todo) {
-            return (<TodoItemComponent todo={todo} onDelete={_.bind(this.props.onTodoDelete, this, todo)} />);
+            console.log(todo.get('id'));
+            return (<TodoItemComponent key={todo.get('id')} todo={todo} onDelete={_.bind(this.props.onTodoDelete, this, todo)} />);
           }, this)}
         </ul>
         );
